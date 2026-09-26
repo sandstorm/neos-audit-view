@@ -76,6 +76,7 @@ defined in `EventTypeGroup::DISPLAY_ORDER`; unlisted event types follow alphabet
 Requires Neos 9 and MySQL / MariaDB. Developed and tested with Neos 9.2.
 
 ```bash
+composer config repositories.neos-audit-view vcs https://github.com/sandstorm/neos-audit-view
 composer require sandstorm/neos-audit-view
 ```
 
