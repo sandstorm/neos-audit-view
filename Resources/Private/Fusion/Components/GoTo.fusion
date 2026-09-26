@@ -1,0 +1,55 @@
+prototype(Sandstorm.NeosAuditView:Component.GoTo) < prototype(Neos.Fusion:Component) {
+    /// array{sequenceNumber: ?int, time: ?string, notice: ?string}
+    goTo = ${{}}
+    /// list<array{name: string, value: string}> the current filters, kept when navigating
+    filterHiddenFields = ${[]}
+    /// only while navigating
+    backToNewestUri = null
+
+    actionUri = Neos.Fusion:UriBuilder {
+        action = 'index'
+    }
+
+    renderer = afx`
+        <section class="sandstorm-auditview__goto">
+            <div class="sandstorm-auditview__goto-grid">
+                <form method="get" action={props.actionUri} class="sandstorm-auditview__field">
+                    <Sandstorm.NeosAuditView:Component.HiddenFields fields={props.filterHiddenFields}/>
+                    <label class="sandstorm-auditview__label" for="sandstorm-auditview-goto">{I18n.translate('Sandstorm.NeosAuditView:Modules:goTo.sequenceNumber')}</label>
+                    <div class="sandstorm-auditview__inline">
+                        <input type="number" id="sandstorm-auditview-goto" class="sandstorm-auditview__input" name="moduleArguments[goTo]"
+                            min="1" required value={props.goTo.sequenceNumber}
+                            placeholder={I18n.translate('Sandstorm.NeosAuditView:Modules:goTo.sequenceNumber.placeholder')}/>
+                        <button type="submit" class="neos-button">{I18n.translate('Sandstorm.NeosAuditView:Modules:goTo.sequenceNumber.submit')}</button>
+                    </div>
+                </form>
+                <form method="get" action={props.actionUri} class="sandstorm-auditview__field" data-auditview-gototime>
+                    <Sandstorm.NeosAuditView:Component.HiddenFields fields={props.filterHiddenFields}/>
+                    <!-- filled by AuditView.js with the browser's timezone offset; without it, the time is interpreted as UTC -->
+                    <input type="hidden" name="moduleArguments[timezoneOffset]" value=""/>
+                    <label class="sandstorm-auditview__label" for="sandstorm-auditview-gototime">{I18n.translate('Sandstorm.NeosAuditView:Modules:goTo.time')}</label>
+                    <div class="sandstorm-auditview__inline">
+                        <input type="datetime-local" id="sandstorm-auditview-gototime" class="sandstorm-auditview__input" name="moduleArguments[goToTime]"
+                            required value={props.goTo.time}/>
+                        <button type="submit" class="neos-button">{I18n.translate('Sandstorm.NeosAuditView:Modules:goTo.time.submit')}</button>
+                    </div>
+                </form>
+            </div>
+            <div @if={props.goTo.notice || props.backToNewestUri} class="sandstorm-auditview__goto-status">
+                <span class="sandstorm-auditview__notice">{props.goTo.notice ? String.htmlSpecialChars(props.goTo.notice) : ''}</span>
+                <a @if={props.backToNewestUri} class="neos-button" href={props.backToNewestUri}>{I18n.translate('Sandstorm.NeosAuditView:Modules:goTo.backToNewest')}</a>
+            </div>
+        </section>
+    `
+}
+
+prototype(Sandstorm.NeosAuditView:Component.HiddenFields) < prototype(Neos.Fusion:Component) {
+    /// list<array{name: string, value: string}>
+    fields = ${[]}
+
+    renderer = afx`
+        <Neos.Fusion:Loop items={props.fields} itemName="field">
+            <input type="hidden" name={field.name} value={field.value}/>
+        </Neos.Fusion:Loop>
+    `
+}

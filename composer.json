@@ -1,0 +1,25 @@
+{
+    "description": "Neos backend module to browse the content repository event log (audit trail)",
+    "type": "neos-package",
+    "name": "sandstorm/neos-audit-view",
+    "license": "MIT",
+    "require": {
+        "neos/flow": "^9",
+        "neos/neos": "^9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sandstorm\\NeosAuditView\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Sandstorm.NeosAuditView"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "neos/composer-plugin": true
+        }
+    }
+}

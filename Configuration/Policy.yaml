@@ -1,0 +1,27 @@
+privilegeTargets:
+  'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+    'Sandstorm.NeosAuditView:AuditTrailController':
+      label: Access to the audit trail module controller
+      matcher: 'method(Sandstorm\NeosAuditView\Controller\AuditTrailController->(?!initialize).*Action())'
+
+  'Neos\Neos\Security\Authorization\Privilege\ModulePrivilege':
+    'Sandstorm.NeosAuditView:Backend.Module.Management.AuditTrail':
+      label: Access to the audit trail backend module
+      matcher: 'management/auditTrail'
+
+roles:
+  'Sandstorm.NeosAuditView:AuditTrailViewer':
+    label: Audit trail viewer
+    description: Grants access to the audit trail module, which lists all content repository events. Assign in addition to an editor role.
+    privileges:
+      - privilegeTarget: 'Sandstorm.NeosAuditView:AuditTrailController'
+        permission: GRANT
+      - privilegeTarget: 'Sandstorm.NeosAuditView:Backend.Module.Management.AuditTrail'
+        permission: GRANT
+
+  'Neos.Neos:Administrator':
+    privileges:
+      - privilegeTarget: 'Sandstorm.NeosAuditView:AuditTrailController'
+        permission: GRANT
+      - privilegeTarget: 'Sandstorm.NeosAuditView:Backend.Module.Management.AuditTrail'
+        permission: GRANT

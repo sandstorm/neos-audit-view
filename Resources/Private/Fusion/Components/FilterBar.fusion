@@ -1,0 +1,69 @@
+prototype(Sandstorm.NeosAuditView:Component.FilterBar) < prototype(Neos.Fusion:Component) {
+    filter = ${{}}
+    isFiltered = false
+    isContentIncluded = true
+    siteOptions = ${{}}
+    workspaceOptions = ${{}}
+    userOptions = ${{}}
+    eventTypeGroups = ${[]}
+    dimensionGroups = ${[]}
+    latestSequenceNumber = null
+    /// array{newest: int, oldest: int}|null
+    shownSequenceNumbers = null
+    /// list<array{name: string, value: string}> the active go-to position, kept when changing filters
+    navigationHiddenFields = ${[]}
+
+    actionUri = Neos.Fusion:UriBuilder {
+        action = 'index'
+    }
+
+    renderer = afx`
+        <form method="get" action={props.actionUri} class="sandstorm-auditview__filter">
+            <Sandstorm.NeosAuditView:Component.HiddenFields fields={props.navigationHiddenFields}/>
+            <div class="sandstorm-auditview__filter-grid">
+                <Sandstorm.NeosAuditView:Component.SingleSelect
+                    name="site" label={I18n.translate('Sandstorm.NeosAuditView:Modules:filter.site')}
+                    options={props.siteOptions} value={props.filter.site}
+                />
+                <Sandstorm.NeosAuditView:Component.Dropdown
+                    name="dimensions" label={I18n.translate('Sandstorm.NeosAuditView:Modules:filter.dimensions')}
+                    groups={props.dimensionGroups}
+                />
+                <Sandstorm.NeosAuditView:Component.SingleSelect
+                    name="workspace" label={I18n.translate('Sandstorm.NeosAuditView:Modules:filter.workspace')}
+                    options={props.workspaceOptions} value={props.filter.workspace}
+                />
+                <Sandstorm.NeosAuditView:Component.SingleSelect
+                    name="user" label={I18n.translate('Sandstorm.NeosAuditView:Modules:filter.user')}
+                    options={props.userOptions} value={props.filter.user}
+                />
+                <div class="sandstorm-auditview__field sandstorm-auditview__field--wide">
+                    <label class="sandstorm-auditview__label" for="sandstorm-auditview-node">{I18n.translate('Sandstorm.NeosAuditView:Modules:filter.node')}</label>
+                    <input type="text" id="sandstorm-auditview-node" class="sandstorm-auditview__input" name="moduleArguments[node]"
+                        value={props.filter.node} placeholder={I18n.translate('Sandstorm.NeosAuditView:Modules:filter.node.placeholder')}/>
+                    <label class="sandstorm-auditview__suboption">
+                        <!-- unchecked checkboxes aren't submitted, so the hidden field sends "0" in that case -->
+                        <input type="hidden" name="moduleArguments[includeContent]" value="0"/>
+                        <input type="checkbox" name="moduleArguments[includeContent]" value="1" checked={props.isContentIncluded}/>
+                        {' '}{I18n.translate('Sandstorm.NeosAuditView:Modules:filter.includeContent')}
+                    </label>
+                </div>
+                <Sandstorm.NeosAuditView:Component.Dropdown
+                    name="eventTypes" groupName="eventTypeGroups" label={I18n.translate('Sandstorm.NeosAuditView:Modules:filter.eventType')}
+                    allLabel={I18n.translate('Sandstorm.NeosAuditView:Modules:filter.eventTypes.default')}
+                    groups={props.eventTypeGroups}
+                />
+            </div>
+            <div class="sandstorm-auditview__filter-actions">
+                <span @if={props.latestSequenceNumber} class="sandstorm-auditview__filter-context">
+                    {I18n.translate('context.latestEvent', null, [props.latestSequenceNumber], 'Modules', 'Sandstorm.NeosAuditView')}
+                    <Neos.Fusion:Fragment @if={props.shownSequenceNumbers}>
+                        {' · ' + I18n.translate('context.shownEvents', null, [props.shownSequenceNumbers.newest, props.shownSequenceNumbers.oldest], 'Modules', 'Sandstorm.NeosAuditView')}
+                    </Neos.Fusion:Fragment>
+                </span>
+                <a @if={props.isFiltered} class="neos-button" href={props.actionUri}>{I18n.translate('Sandstorm.NeosAuditView:Modules:filter.reset')}</a>
+                <button type="submit" class="neos-button neos-button-primary">{I18n.translate('Sandstorm.NeosAuditView:Modules:filter.apply')}</button>
+            </div>
+        </form>
+    `
+}

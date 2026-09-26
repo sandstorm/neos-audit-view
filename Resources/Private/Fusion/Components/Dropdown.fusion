@@ -1,0 +1,116 @@
+##
+# Filter dropdown used for all selection filters, so they look and behave the same.
+#
+# - multiple = true: grouped checkboxes. If groupName is set, each group gets a checkbox which selects the whole group
+#   (resolved on the server, so it works without JS).
+# - multiple = false: radio buttons with an "all" option on top.
+#
+# Hidden if there is nothing to choose from, unless something is selected (e.g. from a link).
+# AuditView.js syncs the checkbox states and updates the summary.
+#
+prototype(Sandstorm.NeosAuditView:Component.Dropdown) < prototype(Neos.Fusion:Component) {
+    label = ''
+    /// string field name of the options, e.g. "eventTypes" (multiple) or "site" (single)
+    name = ''
+    multiple = true
+    /// string|null field name of the group checkboxes (multiple only); null = groups are only headings
+    groupName = null
+    /// list<array{key: string, label: string, isSelected: bool, options: list<array{value: string, label: string, isSelected: bool}>}>
+    groups = ${[]}
+    /// string summary when nothing is selected
+    allLabel = ${I18n.translate('Sandstorm.NeosAuditView:Modules:filter.all')}
+
+    @private {
+        allLabel = ${props.allLabel}
+        hasChoice = ${Array.reduce(props.groups, (count, group) => count + Array.length(group.options), 0) > 1}
+        hasSelection = ${Array.some(props.groups, group => group.isSelected || Array.some(group.options, option => option.isSelected))}
+        // e.g. "Node events, Workspace events (2/9)", "Deutsch, English" or "live"; empty when nothing is selected
+        summary = Neos.Fusion:Map {
+            items = ${props.groups}
+            itemName = 'group'
+            itemRenderer = Neos.Fusion:Case {
+                wholeGroup {
+                    condition = ${group.isSelected}
+                    renderer = ${group.label}
+                }
+                selectedOptions {
+                    condition = ${!props.groupName}
+                    renderer = ${Array.join(Array.map(Array.filter(group.options, option => option.isSelected), option => option.label), ', ')}
+                }
+                selectedCount {
+                    condition = true
+                    @context.selectedCount = ${Array.length(Array.filter(group.options, option => option.isSelected))}
+                    renderer = ${selectedCount > 0 ? group.label + ' (' + selectedCount + '/' + Array.length(group.options) + ')' : ''}
+                }
+            }
+            @process.join = ${Array.join(Array.filter(value), ', ')}
+        }
+    }
+
+    renderer = afx`
+        <div @if={private.hasChoice || private.hasSelection} class="sandstorm-auditview__field">
+            <span class="sandstorm-auditview__label">{props.label}</span>
+            <details class="sandstorm-auditview__dropdown" data-auditview-dropdown data-all-label={private.allLabel}>
+                <summary>{String.htmlSpecialChars(private.summary || private.allLabel)}</summary>
+                <div class="sandstorm-auditview__dropdown-panel">
+                    <label @if={!props.multiple} class="sandstorm-auditview__dropdown-option">
+                        <input type="radio" name={'moduleArguments[' + props.name + ']'} value=""
+                            checked={!private.hasSelection} data-auditview-option data-label={private.allLabel}/>
+                        {' '}{private.allLabel}
+                    </label>
+                    <Neos.Fusion:Loop items={props.groups} itemName="group">
+                        <fieldset class="sandstorm-auditview__dropdown-group" data-group-label={group.label}>
+                            <label @if={props.groupName} class="sandstorm-auditview__dropdown-grouplabel">
+                                <input type="checkbox" name={'moduleArguments[' + props.groupName + '][]'} value={group.key}
+                                    checked={group.isSelected} data-auditview-group/>
+                                {' '}{String.htmlSpecialChars(group.label)} ({Array.length(group.options)})
+                            </label>
+                            <div @if={!props.groupName && group.label} class="sandstorm-auditview__dropdown-grouplabel">{String.htmlSpecialChars(group.label)}</div>
+                            <Neos.Fusion:Loop items={group.options} itemName="option">
+                                <label class={'sandstorm-auditview__dropdown-option' + (group.label ? ' sandstorm-auditview__dropdown-option--grouped' : '')}>
+                                    <input type={props.multiple ? 'checkbox' : 'radio'}
+                                        name={'moduleArguments[' + props.name + ']' + (props.multiple ? '[]' : '')}
+                                        value={option.value} checked={option.isSelected} disabled={group.isSelected}
+                                        data-auditview-option data-label={option.label}/>
+                                    {' '}{String.htmlSpecialChars(option.label)}
+                                </label>
+                            </Neos.Fusion:Loop>
+                        </fieldset>
+                    </Neos.Fusion:Loop>
+                </div>
+            </details>
+        </div>
+    `
+}
+
+##
+# Single-select variant of the dropdown for a flat value => label list
+#
+prototype(Sandstorm.NeosAuditView:Component.SingleSelect) < prototype(Neos.Fusion:Component) {
+    label = ''
+    name = ''
+    /// array<string,string> value => label
+    options = ${{}}
+    value = null
+
+    @private {
+        groups = Neos.Fusion:DataStructure {
+            all = Neos.Fusion:DataStructure {
+                key = 'all'
+                label = ''
+                isSelected = false
+                options = Neos.Fusion:Map {
+                    items = ${props.options}
+                    itemKey = 'optionValue'
+                    itemName = 'optionLabel'
+                    itemRenderer = ${{value: '' + optionValue, label: optionLabel, isSelected: props.value != null && ('' + optionValue) == props.value}}
+                }
+            }
+            @process.toList = ${Array.values(value)}
+        }
+    }
+
+    renderer = afx`
+        <Sandstorm.NeosAuditView:Component.Dropdown label={props.label} name={props.name} multiple={false} groups={private.groups}/>
+    `
+}

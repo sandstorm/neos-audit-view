@@ -1,0 +1,109 @@
+include: Components/*.fusion
+
+Sandstorm.NeosAuditView.AuditTrailController.index = Sandstorm.NeosAuditView:Page.Index {
+    filter = ${filter}
+    filterArguments = ${filterArguments}
+    filterHiddenFields = ${filterHiddenFields}
+    navigationHiddenFields = ${navigationHiddenFields}
+    goTo = ${goTo}
+    navigation = ${navigation}
+    isFiltered = ${isFiltered}
+    isFirstPage = ${isFirstPage}
+    siteOptions = ${siteOptions}
+    workspaceOptions = ${workspaceOptions}
+    userOptions = ${userOptions}
+    eventTypeGroups = ${eventTypeGroups}
+    dimensionGroups = ${dimensionGroups}
+    isContentIncluded = ${isContentIncluded}
+    matchedNodes = ${matchedNodes}
+    maxMatchedNodes = ${maxMatchedNodes}
+    contentNodeCount = ${contentNodeCount}
+    events = ${events}
+    nextBefore = ${nextBefore}
+    latestSequenceNumber = ${latestSequenceNumber}
+    shownSequenceNumbers = ${shownSequenceNumbers}
+}
+
+prototype(Sandstorm.NeosAuditView:Page.Index) < prototype(Neos.Fusion:Component) {
+    filter = ${{}}
+    filterArguments = ${{}}
+    filterHiddenFields = ${[]}
+    navigationHiddenFields = ${[]}
+    /// array{sequenceNumber: ?int, time: ?string, notice: ?string}
+    goTo = ${{}}
+    /// array{sourceSequenceNumber: ?int, newerUri: ?string, olderUri: ?string, backToNewestUri: string}|null, only while navigating to an event
+    navigation = null
+    isFiltered = false
+    isFirstPage = true
+    siteOptions = ${{}}
+    workspaceOptions = ${{}}
+    userOptions = ${{}}
+    eventTypeGroups = ${[]}
+    dimensionGroups = ${[]}
+    isContentIncluded = true
+    matchedNodes = ${[]}
+    maxMatchedNodes = 0
+    contentNodeCount = 0
+    events = ${[]}
+    nextBefore = null
+    latestSequenceNumber = null
+    shownSequenceNumbers = null
+
+    // props are only accessible in @private and renderer
+    @private {
+        newestUri = Neos.Fusion:UriBuilder {
+            action = 'index'
+            arguments = ${props.filterArguments}
+        }
+        olderUri = Neos.Fusion:UriBuilder {
+            @if.hasOlderEvents = ${props.nextBefore}
+            action = 'index'
+            arguments = ${Array.set(props.filterArguments, 'before', props.nextBefore)}
+        }
+    }
+
+    renderer = afx`
+        <div class="neos-content neos-container-fluid sandstorm-auditview">
+            <Sandstorm.NeosAuditView:Component.FilterBar
+                filter={props.filter}
+                isFiltered={props.isFiltered}
+                isContentIncluded={props.isContentIncluded}
+                siteOptions={props.siteOptions}
+                workspaceOptions={props.workspaceOptions}
+                userOptions={props.userOptions}
+                eventTypeGroups={props.eventTypeGroups}
+                latestSequenceNumber={props.latestSequenceNumber}
+                shownSequenceNumbers={props.shownSequenceNumbers}
+                dimensionGroups={props.dimensionGroups}
+                navigationHiddenFields={props.navigationHiddenFields}
+            />
+            <Sandstorm.NeosAuditView:Component.GoTo
+                goTo={props.goTo}
+                filterHiddenFields={props.filterHiddenFields}
+                backToNewestUri={props.navigation.backToNewestUri}
+            />
+            <Sandstorm.NeosAuditView:Component.MatchedNodes
+                @if={props.filter.node}
+                matchedNodes={props.matchedNodes}
+                maxMatchedNodes={props.maxMatchedNodes}
+                contentNodeCount={props.contentNodeCount}
+            />
+            <p @if={!props.events} class="sandstorm-auditview__empty">{I18n.translate('Sandstorm.NeosAuditView:Modules:events.empty')}</p>
+            <div @if={props.navigation && props.events} id="sandstorm-auditview-newer" class="sandstorm-auditview__loadmore">
+                <a @if={props.navigation.newerUri} class="neos-button" href={props.navigation.newerUri}>{I18n.translate('Sandstorm.NeosAuditView:Modules:goTo.loadNewer')}</a>
+                <span @if={!props.navigation.newerUri} class="sandstorm-auditview__muted">{I18n.translate('Sandstorm.NeosAuditView:Modules:goTo.newestReached')}</span>
+            </div>
+            <Neos.Fusion:Loop items={props.events} itemName="event">
+                <Sandstorm.NeosAuditView:Component.EventItem event={event}/>
+            </Neos.Fusion:Loop>
+            <div @if={props.navigation && props.events} class="sandstorm-auditview__loadmore">
+                <a @if={props.navigation.olderUri} class="neos-button" href={props.navigation.olderUri}>{I18n.translate('Sandstorm.NeosAuditView:Modules:goTo.loadOlder')}</a>
+                <span @if={!props.navigation.olderUri} class="sandstorm-auditview__muted">{I18n.translate('Sandstorm.NeosAuditView:Modules:goTo.oldestReached')}</span>
+            </div>
+            <div @if={!props.navigation} class="sandstorm-auditview__paging">
+                <a @if={!props.isFirstPage} class="neos-button" href={private.newestUri}>{I18n.translate('Sandstorm.NeosAuditView:Modules:paging.newest')}</a>
+                <a @if={props.nextBefore} class="neos-button" href={private.olderUri}>{I18n.translate('Sandstorm.NeosAuditView:Modules:paging.older')}</a>
+            </div>
+        </div>
+    `
+}

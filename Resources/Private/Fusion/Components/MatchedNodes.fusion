@@ -1,0 +1,34 @@
+prototype(Sandstorm.NeosAuditView:Component.MatchedNodes) < prototype(Neos.Fusion:Component) {
+    /// list<Sandstorm\NeosAuditView\Projection\AuditNodeRecord>
+    matchedNodes = ${[]}
+    maxMatchedNodes = 0
+    contentNodeCount = 0
+
+    renderer = afx`
+        <div class="sandstorm-auditview__matched">
+            <p @if={!props.matchedNodes}>{I18n.translate('Sandstorm.NeosAuditView:Modules:matchedNodes.none')}</p>
+            <Neos.Fusion:Fragment @if={props.matchedNodes}>
+                <p>
+                    {I18n.translate('matchedNodes.label', null, [Array.length(props.matchedNodes)], 'Modules', 'Sandstorm.NeosAuditView')}
+                    <Neos.Fusion:Fragment @if={Array.length(props.matchedNodes) >= props.maxMatchedNodes}>
+                        {' ' + I18n.translate('Sandstorm.NeosAuditView:Modules:matchedNodes.truncated')}
+                    </Neos.Fusion:Fragment>
+                    <Neos.Fusion:Fragment @if={props.contentNodeCount > 0}>
+                        {' ' + I18n.translate('matchedNodes.contentNodes', null, [props.contentNodeCount], 'Modules', 'Sandstorm.NeosAuditView')}
+                    </Neos.Fusion:Fragment>
+                </p>
+                <ul>
+                    <Neos.Fusion:Loop items={props.matchedNodes} itemName="node">
+                        <li>
+                            <Neos.Fusion:Fragment @if={node.titleOrName}>
+                                <strong>{String.htmlSpecialChars(node.titleOrName)}</strong>{' '}
+                            </Neos.Fusion:Fragment><code>{String.htmlSpecialChars(node.nodeAggregateId)}</code>
+                            {' '}<span class="sandstorm-auditview__muted">{String.htmlSpecialChars(node.nodeTypeName)}</span>
+                            <span @if={node.removed} class="sandstorm-auditview__badge">{I18n.translate('Sandstorm.NeosAuditView:Modules:node.removed')}</span>
+                        </li>
+                    </Neos.Fusion:Loop>
+                </ul>
+            </Neos.Fusion:Fragment>
+        </div>
+    `
+}

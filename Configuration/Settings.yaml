@@ -1,0 +1,30 @@
+Neos:
+  ContentRepositoryRegistry:
+    presets:
+      'default':
+        projections:
+          'Sandstorm.NeosAuditView:AuditIndex':
+            factoryObjectName: Sandstorm\NeosAuditView\Projection\AuditIndexProjectionFactory
+
+  Neos:
+    modules:
+      management:
+        submodules:
+          auditTrail:
+            label: 'Sandstorm.NeosAuditView:Modules:auditTrail.label'
+            description: 'Sandstorm.NeosAuditView:Modules:auditTrail.description'
+            controller: 'Sandstorm\NeosAuditView\Controller\AuditTrailController'
+            icon: 'fas fa-history'
+            mainStylesheet: 'Lite'
+            privilegeTarget: 'Sandstorm.NeosAuditView:Backend.Module.Management.AuditTrail'
+            additionalResources:
+              styleSheets:
+                - 'resource://Sandstorm.NeosAuditView/Public/Styles/AuditView.css'
+              javaScripts:
+                - 'resource://Sandstorm.NeosAuditView/Public/JavaScript/AuditView.js'
+
+Sandstorm:
+  NeosAuditView:
+    # Backend module to link assets referenced in event payloads to. It must support the
+    # "searchTerm=id:<asset id>" URL parameter (Flowpack.Media.Ui does). Set to null to disable the links.
+    mediaModulePath: 'management/mediaui'

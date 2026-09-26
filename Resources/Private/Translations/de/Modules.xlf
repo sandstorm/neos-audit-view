@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Sandstorm.NeosAuditView" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="auditTrail.label" xml:space="preserve">
+                <source>Audit trail</source>
+                <target state="translated">Audit-Trail</target>
+            </trans-unit>
+            <trans-unit id="auditTrail.description" xml:space="preserve">
+                <source>Browse all content repository events, newest first.</source>
+                <target state="translated">Alle Ereignisse des Content Repository durchsuchen, neueste zuerst.</target>
+            </trans-unit>
+            <trans-unit id="filter.site" xml:space="preserve">
+                <source>Site</source>
+                <target state="translated">Website</target>
+            </trans-unit>
+            <trans-unit id="filter.workspace" xml:space="preserve">
+                <source>Workspace</source>
+                <target state="translated">Arbeitsbereich</target>
+            </trans-unit>
+            <trans-unit id="filter.user" xml:space="preserve">
+                <source>User</source>
+                <target state="translated">Benutzer</target>
+            </trans-unit>
+            <trans-unit id="filter.node" xml:space="preserve">
+                <source>Node</source>
+                <target state="translated">Knoten</target>
+            </trans-unit>
+            <trans-unit id="filter.node.placeholder" xml:space="preserve">
+                <source>Node aggregate ID or title</source>
+                <target state="translated">Knoten-ID oder Titel</target>
+            </trans-unit>
+            <trans-unit id="filter.includeContent" xml:space="preserve">
+                <source>Include page content</source>
+                <target state="translated">Inhalte der Seite einbeziehen</target>
+            </trans-unit>
+            <trans-unit id="filter.eventType" xml:space="preserve">
+                <source>Event type</source>
+                <target state="translated">Ereignistyp</target>
+            </trans-unit>
+            <trans-unit id="matchedNodes.contentNodes" xml:space="preserve">
+                <source>(+ {0} content node(s) below)</source>
+                <target state="translated">(+ {0} Inhaltsknoten darunter)</target>
+            </trans-unit>
+            <trans-unit id="filter.dimensions" xml:space="preserve">
+                <source>Dimensions</source>
+                <target state="translated">Dimensionen</target>
+            </trans-unit>
+            <trans-unit id="eventTypeGroup.node" xml:space="preserve">
+                <source>Content changes</source>
+                <target state="translated">Inhaltsänderungen</target>
+            </trans-unit>
+            <trans-unit id="eventTypeGroup.workspace" xml:space="preserve">
+                <source>Publishing &amp; workspaces</source>
+                <target state="translated">Veröffentlichung &amp; Arbeitsbereiche</target>
+            </trans-unit>
+            <trans-unit id="eventTypeGroup.contentStream" xml:space="preserve">
+                <source>Technical</source>
+                <target state="translated">Technisch</target>
+            </trans-unit>
+            <trans-unit id="eventTypeGroup.other" xml:space="preserve">
+                <source>Other</source>
+                <target state="translated">Sonstiges</target>
+            </trans-unit>
+            <trans-unit id="filter.all" xml:space="preserve">
+                <source>– all –</source>
+                <target state="translated">– alle –</target>
+            </trans-unit>
+            <trans-unit id="filter.apply" xml:space="preserve">
+                <source>Filter</source>
+                <target state="translated">Filtern</target>
+            </trans-unit>
+            <trans-unit id="filter.reset" xml:space="preserve">
+                <source>Reset</source>
+                <target state="translated">Zurücksetzen</target>
+            </trans-unit>
+            <trans-unit id="matchedNodes.label" xml:space="preserve">
+                <source>Showing events for {0} matching node(s):</source>
+                <target state="translated">Ereignisse für {0} passende(n) Knoten:</target>
+            </trans-unit>
+            <trans-unit id="matchedNodes.truncated" xml:space="preserve">
+                <source>(result limit reached – refine your search)</source>
+                <target state="translated">(Trefferlimit erreicht – bitte Suche verfeinern)</target>
+            </trans-unit>
+            <trans-unit id="matchedNodes.none" xml:space="preserve">
+                <source>No node matches this aggregate ID or title.</source>
+                <target state="translated">Kein Knoten passt zu dieser ID oder diesem Titel.</target>
+            </trans-unit>
+            <trans-unit id="node.removed" xml:space="preserve">
+                <source>removed</source>
+                <target state="translated">gelöscht</target>
+            </trans-unit>
+            <trans-unit id="events.empty" xml:space="preserve">
+                <source>No events found.</source>
+                <target state="translated">Keine Ereignisse gefunden.</target>
+            </trans-unit>
+            <trans-unit id="event.sequenceNumber" xml:space="preserve">
+                <source>Sequence number</source>
+                <target state="translated">Laufende Nummer</target>
+            </trans-unit>
+            <trans-unit id="event.user" xml:space="preserve">
+                <source>User</source>
+                <target state="translated">Benutzer</target>
+            </trans-unit>
+            <trans-unit id="event.workspace" xml:space="preserve">
+                <source>Workspace</source>
+                <target state="translated">Arbeitsbereich</target>
+            </trans-unit>
+            <trans-unit id="event.site" xml:space="preserve">
+                <source>Site</source>
+                <target state="translated">Website</target>
+            </trans-unit>
+            <trans-unit id="event.node" xml:space="preserve">
+                <source>Node</source>
+                <target state="translated">Knoten</target>
+            </trans-unit>
+            <trans-unit id="event.showInContentModule" xml:space="preserve">
+                <source>Show in content module</source>
+                <target state="translated">Im Inhaltsmodul anzeigen</target>
+            </trans-unit>
+            <trans-unit id="event.assets" xml:space="preserve">
+                <source>Assets</source>
+                <target state="translated">Medien</target>
+            </trans-unit>
+            <trans-unit id="event.assets.showInMediaModule" xml:space="preserve">
+                <source>Show in media module</source>
+                <target state="translated">In der Medienverwaltung anzeigen</target>
+            </trans-unit>
+            <trans-unit id="event.stream" xml:space="preserve">
+                <source>Stream</source>
+                <target state="translated">Stream</target>
+            </trans-unit>
+            <trans-unit id="event.payload" xml:space="preserve">
+                <source>Payload</source>
+                <target state="translated">Payload</target>
+            </trans-unit>
+            <trans-unit id="event.metadata" xml:space="preserve">
+                <source>Metadata</source>
+                <target state="translated">Metadaten</target>
+            </trans-unit>
+            <trans-unit id="paging.newest" xml:space="preserve">
+                <source>« Newest events</source>
+                <target state="translated">« Neueste Ereignisse</target>
+            </trans-unit>
+            <trans-unit id="paging.older" xml:space="preserve">
+                <source>Older events »</source>
+                <target state="translated">Ältere Ereignisse »</target>
+            </trans-unit>
+            <trans-unit id="event.type" xml:space="preserve">
+                <source>Event type</source>
+                <target state="translated">Ereignistyp</target>
+            </trans-unit>
+            <trans-unit id="filter.eventTypes.default" xml:space="preserve">
+                <source>All except technical</source>
+                <target state="translated">Alle außer technische</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWithNodeWasCreated" xml:space="preserve">
+                <source>Created</source>
+                <target state="translated">Erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWithNodeWasCreated.document" xml:space="preserve">
+                <source>Page created</source>
+                <target state="translated">Seite erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWithNodeWasCreated.content" xml:space="preserve">
+                <source>Content created</source>
+                <target state="translated">Inhalt erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodePropertiesWereSet" xml:space="preserve">
+                <source>Edited</source>
+                <target state="translated">Bearbeitet</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodePropertiesWereSet.document" xml:space="preserve">
+                <source>Page edited</source>
+                <target state="translated">Seite bearbeitet</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodePropertiesWereSet.content" xml:space="preserve">
+                <source>Content edited</source>
+                <target state="translated">Inhalt bearbeitet</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeReferencesWereSet" xml:space="preserve">
+                <source>References changed</source>
+                <target state="translated">Verweise geändert</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeReferencesWereSet.document" xml:space="preserve">
+                <source>Page references changed</source>
+                <target state="translated">Verweise der Seite geändert</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeReferencesWereSet.content" xml:space="preserve">
+                <source>Content references changed</source>
+                <target state="translated">Verweise des Inhalts geändert</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWasMoved" xml:space="preserve">
+                <source>Moved</source>
+                <target state="translated">Verschoben</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWasMoved.document" xml:space="preserve">
+                <source>Page moved</source>
+                <target state="translated">Seite verschoben</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWasMoved.content" xml:space="preserve">
+                <source>Content moved</source>
+                <target state="translated">Inhalt verschoben</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWasRemoved" xml:space="preserve">
+                <source>Deleted (purged)</source>
+                <target state="translated">Gelöscht (endgültig)</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWasRemoved.document" xml:space="preserve">
+                <source>Page deleted (purged)</source>
+                <target state="translated">Seite gelöscht (endgültig)</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWasRemoved.content" xml:space="preserve">
+                <source>Content deleted (purged)</source>
+                <target state="translated">Inhalt gelöscht (endgültig)</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateNameWasChanged" xml:space="preserve">
+                <source>Technical name changed</source>
+                <target state="translated">Technischer Name geändert</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateNameWasChanged.document" xml:space="preserve">
+                <source>Page: technical name changed</source>
+                <target state="translated">Seite: technischer Name geändert</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateNameWasChanged.content" xml:space="preserve">
+                <source>Content: technical name changed</source>
+                <target state="translated">Inhalt: technischer Name geändert</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateTypeWasChanged" xml:space="preserve">
+                <source>Type changed</source>
+                <target state="translated">Typ geändert</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateTypeWasChanged.document" xml:space="preserve">
+                <source>Page type changed</source>
+                <target state="translated">Seitentyp geändert</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateTypeWasChanged.content" xml:space="preserve">
+                <source>Content type changed</source>
+                <target state="translated">Inhaltstyp geändert</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeSpecializationVariantWasCreated" xml:space="preserve">
+                <source>Language version created</source>
+                <target state="translated">Sprachversion erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeSpecializationVariantWasCreated.document" xml:space="preserve">
+                <source>Page language version created</source>
+                <target state="translated">Sprachversion der Seite erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeSpecializationVariantWasCreated.content" xml:space="preserve">
+                <source>Content language version created</source>
+                <target state="translated">Sprachversion des Inhalts erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeGeneralizationVariantWasCreated" xml:space="preserve">
+                <source>Language version created</source>
+                <target state="translated">Sprachversion erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeGeneralizationVariantWasCreated.document" xml:space="preserve">
+                <source>Page language version created</source>
+                <target state="translated">Sprachversion der Seite erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeGeneralizationVariantWasCreated.content" xml:space="preserve">
+                <source>Content language version created</source>
+                <target state="translated">Sprachversion des Inhalts erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodePeerVariantWasCreated" xml:space="preserve">
+                <source>Language version created</source>
+                <target state="translated">Sprachversion erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodePeerVariantWasCreated.document" xml:space="preserve">
+                <source>Page language version created</source>
+                <target state="translated">Sprachversion der Seite erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodePeerVariantWasCreated.content" xml:space="preserve">
+                <source>Content language version created</source>
+                <target state="translated">Sprachversion des Inhalts erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWasDisabled" xml:space="preserve">
+                <source>Hidden</source>
+                <target state="translated">Versteckt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWasDisabled.document" xml:space="preserve">
+                <source>Page hidden</source>
+                <target state="translated">Seite versteckt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWasDisabled.content" xml:space="preserve">
+                <source>Content hidden</source>
+                <target state="translated">Inhalt versteckt</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWasEnabled" xml:space="preserve">
+                <source>Shown again</source>
+                <target state="translated">Wieder eingeblendet</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWasEnabled.document" xml:space="preserve">
+                <source>Page shown again</source>
+                <target state="translated">Seite wieder eingeblendet</target>
+            </trans-unit>
+            <trans-unit id="eventType.NodeAggregateWasEnabled.content" xml:space="preserve">
+                <source>Content shown again</source>
+                <target state="translated">Inhalt wieder eingeblendet</target>
+            </trans-unit>
+            <trans-unit id="eventType.SubtreeWasTagged" xml:space="preserve">
+                <source>Hidden / deleted (restorable)</source>
+                <target state="translated">Versteckt / gelöscht (wiederherstellbar)</target>
+            </trans-unit>
+            <trans-unit id="eventType.SubtreeWasTagged.disabled" xml:space="preserve">
+                <source>Hidden</source>
+                <target state="translated">Versteckt</target>
+            </trans-unit>
+            <trans-unit id="eventType.SubtreeWasTagged.disabled.document" xml:space="preserve">
+                <source>Page hidden</source>
+                <target state="translated">Seite versteckt</target>
+            </trans-unit>
+            <trans-unit id="eventType.SubtreeWasTagged.disabled.content" xml:space="preserve">
+                <source>Content hidden</source>
+                <target state="translated">Inhalt versteckt</target>
+            </trans-unit>
+            <trans-unit id="eventType.SubtreeWasTagged.removed" xml:space="preserve">
+                <source>Deleted (restorable)</source>
+                <target state="translated">Gelöscht (wiederherstellbar)</target>
+            </trans-unit>
+            <trans-unit id="eventType.SubtreeWasTagged.removed.document" xml:space="preserve">
+                <source>Page deleted (restorable)</source>
+                <target state="translated">Seite gelöscht (wiederherstellbar)</target>
+            </trans-unit>
+            <trans-unit id="eventType.SubtreeWasTagged.removed.content" xml:space="preserve">
+                <source>Content deleted (restorable)</source>
+                <target state="translated">Inhalt gelöscht (wiederherstellbar)</target>
+            </trans-unit>
+            <trans-unit id="eventType.SubtreeWasUntagged" xml:space="preserve">
+                <source>Shown again / restored</source>
+                <target state="translated">Wieder eingeblendet / wiederhergestellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.SubtreeWasUntagged.disabled" xml:space="preserve">
+                <source>Shown again</source>
+                <target state="translated">Wieder eingeblendet</target>
+            </trans-unit>
+            <trans-unit id="eventType.SubtreeWasUntagged.disabled.document" xml:space="preserve">
+                <source>Page shown again</source>
+                <target state="translated">Seite wieder eingeblendet</target>
+            </trans-unit>
+            <trans-unit id="eventType.SubtreeWasUntagged.disabled.content" xml:space="preserve">
+                <source>Content shown again</source>
+                <target state="translated">Inhalt wieder eingeblendet</target>
+            </trans-unit>
+            <trans-unit id="eventType.SubtreeWasUntagged.removed" xml:space="preserve">
+                <source>Restored</source>
+                <target state="translated">Wiederhergestellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.SubtreeWasUntagged.removed.document" xml:space="preserve">
+                <source>Page restored</source>
+                <target state="translated">Seite wiederhergestellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.SubtreeWasUntagged.removed.content" xml:space="preserve">
+                <source>Content restored</source>
+                <target state="translated">Inhalt wiederhergestellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.RootNodeAggregateWithNodeWasCreated" xml:space="preserve">
+                <source>Site structure created</source>
+                <target state="translated">Seitenstruktur angelegt</target>
+            </trans-unit>
+            <trans-unit id="eventType.RootNodeAggregateDimensionsWereUpdated" xml:space="preserve">
+                <source>Languages of site structure updated</source>
+                <target state="translated">Sprachen der Seitenstruktur aktualisiert</target>
+            </trans-unit>
+            <trans-unit id="eventType.WorkspaceWasPublished" xml:space="preserve">
+                <source>Changes published</source>
+                <target state="translated">Änderungen veröffentlicht</target>
+            </trans-unit>
+            <trans-unit id="eventType.WorkspaceWasPublished.partial" xml:space="preserve">
+                <source>Changes published (partly)</source>
+                <target state="translated">Änderungen teilweise veröffentlicht</target>
+            </trans-unit>
+            <trans-unit id="eventType.WorkspaceWasPartiallyPublished" xml:space="preserve">
+                <source>Changes published (partly)</source>
+                <target state="translated">Änderungen teilweise veröffentlicht</target>
+            </trans-unit>
+            <trans-unit id="eventType.WorkspaceWasDiscarded" xml:space="preserve">
+                <source>Changes discarded</source>
+                <target state="translated">Änderungen verworfen</target>
+            </trans-unit>
+            <trans-unit id="eventType.WorkspaceWasPartiallyDiscarded" xml:space="preserve">
+                <source>Some changes discarded</source>
+                <target state="translated">Einige Änderungen verworfen</target>
+            </trans-unit>
+            <trans-unit id="eventType.WorkspaceWasRebased" xml:space="preserve">
+                <source>Workspace synchronized</source>
+                <target state="translated">Arbeitsbereich synchronisiert</target>
+            </trans-unit>
+            <trans-unit id="eventType.WorkspaceRebaseFailed" xml:space="preserve">
+                <source>Synchronization failed (conflict)</source>
+                <target state="translated">Synchronisierung fehlgeschlagen (Konflikt)</target>
+            </trans-unit>
+            <trans-unit id="eventType.WorkspaceWasCreated" xml:space="preserve">
+                <source>Workspace created</source>
+                <target state="translated">Arbeitsbereich erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.RootWorkspaceWasCreated" xml:space="preserve">
+                <source>Base workspace created</source>
+                <target state="translated">Basis-Arbeitsbereich erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.WorkspaceWasRemoved" xml:space="preserve">
+                <source>Workspace deleted</source>
+                <target state="translated">Arbeitsbereich gelöscht</target>
+            </trans-unit>
+            <trans-unit id="eventType.WorkspaceWasRenamed" xml:space="preserve">
+                <source>Workspace renamed</source>
+                <target state="translated">Arbeitsbereich umbenannt</target>
+            </trans-unit>
+            <trans-unit id="eventType.WorkspaceOwnerWasChanged" xml:space="preserve">
+                <source>Workspace owner changed</source>
+                <target state="translated">Eigentümer des Arbeitsbereichs geändert</target>
+            </trans-unit>
+            <trans-unit id="eventType.WorkspaceBaseWorkspaceWasChanged" xml:space="preserve">
+                <source>Workspace target changed</source>
+                <target state="translated">Ziel des Arbeitsbereichs geändert</target>
+            </trans-unit>
+            <trans-unit id="eventType.ContentStreamWasCreated" xml:space="preserve">
+                <source>Technical: content version created</source>
+                <target state="translated">Technisch: Inhaltsversion erstellt</target>
+            </trans-unit>
+            <trans-unit id="eventType.ContentStreamWasForked" xml:space="preserve">
+                <source>Technical: content version copied</source>
+                <target state="translated">Technisch: Inhaltsversion kopiert</target>
+            </trans-unit>
+            <trans-unit id="eventType.ContentStreamWasClosed" xml:space="preserve">
+                <source>Technical: content version locked</source>
+                <target state="translated">Technisch: Inhaltsversion gesperrt</target>
+            </trans-unit>
+            <trans-unit id="eventType.ContentStreamWasReopened" xml:space="preserve">
+                <source>Technical: content version unlocked</source>
+                <target state="translated">Technisch: Inhaltsversion entsperrt</target>
+            </trans-unit>
+            <trans-unit id="eventType.ContentStreamWasRemoved" xml:space="preserve">
+                <source>Technical: content version removed</source>
+                <target state="translated">Technisch: Inhaltsversion entfernt</target>
+            </trans-unit>
+            <trans-unit id="eventType.DimensionSpacePointWasMoved" xml:space="preserve">
+                <source>Language version moved (migration)</source>
+                <target state="translated">Sprachversion verschoben (Migration)</target>
+            </trans-unit>
+            <trans-unit id="eventType.DimensionShineThroughWasAdded" xml:space="preserve">
+                <source>Language fallback added (migration)</source>
+                <target state="translated">Sprach-Fallback hinzugefügt (Migration)</target>
+            </trans-unit>
+            <trans-unit id="context.latestEvent" xml:space="preserve">
+                <source>Latest event: #{0}</source>
+                <target state="translated">Neuestes Ereignis: #{0}</target>
+            </trans-unit>
+            <trans-unit id="context.shownEvents" xml:space="preserve">
+                <source>showing #{0} – #{1}</source>
+                <target state="translated">angezeigt: #{0} – #{1}</target>
+            </trans-unit>
+            <trans-unit id="goTo.sequenceNumber" xml:space="preserve">
+                <source>Go to event number</source>
+                <target state="translated">Zu Ereignisnummer springen</target>
+            </trans-unit>
+            <trans-unit id="goTo.sequenceNumber.placeholder" xml:space="preserve">
+                <source>e.g. 1234</source>
+                <target state="translated">z. B. 1234</target>
+            </trans-unit>
+            <trans-unit id="goTo.sequenceNumber.submit" xml:space="preserve">
+                <source>Go to event</source>
+                <target state="translated">Zum Ereignis</target>
+            </trans-unit>
+            <trans-unit id="goTo.time" xml:space="preserve">
+                <source>Go to date &amp; time</source>
+                <target state="translated">Zu Datum &amp; Uhrzeit springen</target>
+            </trans-unit>
+            <trans-unit id="goTo.time.submit" xml:space="preserve">
+                <source>Go to time</source>
+                <target state="translated">Zum Zeitpunkt</target>
+            </trans-unit>
+            <trans-unit id="goTo.backToNewest" xml:space="preserve">
+                <source>Back to newest events</source>
+                <target state="translated">Zurück zu den neuesten Ereignissen</target>
+            </trans-unit>
+            <trans-unit id="goTo.loadNewer" xml:space="preserve">
+                <source>Load 10 newer events</source>
+                <target state="translated">10 neuere Ereignisse laden</target>
+            </trans-unit>
+            <trans-unit id="goTo.loadOlder" xml:space="preserve">
+                <source>Load 10 older events</source>
+                <target state="translated">10 ältere Ereignisse laden</target>
+            </trans-unit>
+            <trans-unit id="goTo.newestReached" xml:space="preserve">
+                <source>Newest matching event reached</source>
+                <target state="translated">Neuestes passendes Ereignis erreicht</target>
+            </trans-unit>
+            <trans-unit id="goTo.oldestReached" xml:space="preserve">
+                <source>Oldest matching event reached</source>
+                <target state="translated">Ältestes passendes Ereignis erreicht</target>
+            </trans-unit>
+            <trans-unit id="goTo.notice.closestOlder" xml:space="preserve">
+                <source>No event #{0} matches the current filters – showing the closest older event #{1}</source>
+                <target state="translated">Kein Ereignis #{0} passt zu den aktuellen Filtern – angezeigt wird das nächstältere Ereignis #{1}</target>
+            </trans-unit>
+            <trans-unit id="goTo.notice.closestNewer" xml:space="preserve">
+                <source>No event up to #{0} matches the current filters – showing the closest newer event #{1}</source>
+                <target state="translated">Kein Ereignis bis #{0} passt zu den aktuellen Filtern – angezeigt wird das nächstneuere Ereignis #{1}</target>
+            </trans-unit>
+            <trans-unit id="goTo.notice.time" xml:space="preserve">
+                <source>Closest event before {0}: #{1}</source>
+                <target state="translated">Letztes Ereignis vor {0}: #{1}</target>
+            </trans-unit>
+            <trans-unit id="goTo.notice.noEventBeforeTime" xml:space="preserve">
+                <source>No event before {0} matches the current filters – showing the oldest event #{1}</source>
+                <target state="translated">Kein Ereignis vor {0} passt zu den aktuellen Filtern – angezeigt wird das älteste Ereignis #{1}</target>
+            </trans-unit>
+            <trans-unit id="goTo.notice.invalidTime" xml:space="preserve">
+                <source>Invalid date / time</source>
+                <target state="translated">Ungültiges Datum / ungültige Uhrzeit</target>
+            </trans-unit>
+            <trans-unit id="event.goTo" xml:space="preserve">
+                <source>Show this event with the events around it (link to share)</source>
+                <target state="translated">Dieses Ereignis mit den umliegenden Ereignissen anzeigen (Link zum Teilen)</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

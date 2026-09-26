@@ -1,0 +1,68 @@
+prototype(Sandstorm.NeosAuditView:Component.EventItem) < prototype(Neos.Fusion:Component) {
+    /// array{record: \Sandstorm\NeosAuditView\Projection\AuditEventRecord, isSource: bool, goToUri: string, label: string, userLabel: ?string, siteLabel: ?string, nodeLabel: ?string, nodeTypeName: ?string, nodeKind: 'document'|'content'|null, contentModuleUri: ?string, assets: list<array{propertyName: string, assetId: string, objectType: string, mediaModuleUri: ?string}>}
+    event = null
+
+    @private {
+        record = ${props.event.record}
+    }
+
+    renderer = afx`
+        <article
+            id={'sandstorm-auditview-event-' + private.record.sequenceNumber}
+            class={'sandstorm-auditview__event' + (props.event.nodeKind ? ' sandstorm-auditview__event--' + props.event.nodeKind : '') + (props.event.isSource ? ' sandstorm-auditview__event--source' : '')}
+            data-auditview-source={props.event.isSource}
+        >
+            <header>
+                <a class="sandstorm-auditview__seq" href={props.event.goToUri} title={I18n.translate('Sandstorm.NeosAuditView:Modules:event.goTo')}>#{private.record.sequenceNumber}</a>
+                <!-- UTC fallback, converted to the browser's timezone by AuditView.js -->
+                <time datetime={Date.format(private.record.recordedAt, 'c')} data-auditview-localize>{Date.format(private.record.recordedAt, 'Y-m-d H:i:s')} UTC</time>
+                <strong class="sandstorm-auditview__type" title={private.record.eventType}>{String.htmlSpecialChars(props.event.label)}</strong>
+                <span @if={props.event.nodeTypeName} class="sandstorm-auditview__nodetype">{String.htmlSpecialChars(props.event.nodeTypeName)}</span>
+                <span @if={props.event.nodeLabel} class="sandstorm-auditview__nodelabel">{String.htmlSpecialChars(props.event.nodeLabel)}</span>
+            </header>
+            <dl>
+                <dt>{I18n.translate('Sandstorm.NeosAuditView:Modules:event.user')}</dt>
+                <dd>{String.htmlSpecialChars(props.event.userLabel || '–')}</dd>
+                <dt>{I18n.translate('Sandstorm.NeosAuditView:Modules:event.workspace')}</dt>
+                <dd>{String.htmlSpecialChars(private.record.workspaceName || '–')}</dd>
+                <dt>{I18n.translate('Sandstorm.NeosAuditView:Modules:event.site')}</dt>
+                <dd>{String.htmlSpecialChars(props.event.siteLabel || '–')}</dd>
+                <dt>{I18n.translate('Sandstorm.NeosAuditView:Modules:event.node')}</dt>
+                <dd>
+                    {props.event.nodeLabel ? String.htmlSpecialChars(props.event.nodeLabel) + ' ' : ''}
+                    <code @if={private.record.nodeAggregateId}>{String.htmlSpecialChars(private.record.nodeAggregateId)}</code>
+                    {private.record.nodeAggregateId ? '' : '–'}
+                    <a @if={props.event.contentModuleUri} href={props.event.contentModuleUri} target="_blank" class="sandstorm-auditview__externallink">
+                        <i class="fas fa-external-link-alt"></i>{' '}{I18n.translate('Sandstorm.NeosAuditView:Modules:event.showInContentModule')}
+                    </a>
+                </dd>
+                <Neos.Fusion:Fragment @if={props.event.assets}>
+                    <dt>{I18n.translate('Sandstorm.NeosAuditView:Modules:event.assets')}</dt>
+                    <dd>
+                        <Neos.Fusion:Loop items={props.event.assets} itemName="asset">
+                            <div>
+                                {String.htmlSpecialChars(asset.propertyName)}:{' '}
+                                <code>{String.htmlSpecialChars(asset.assetId)}</code>
+                                <a @if={asset.mediaModuleUri} href={asset.mediaModuleUri} target="_blank" class="sandstorm-auditview__externallink">
+                                    <i class="fas fa-external-link-alt"></i>{' '}{I18n.translate('Sandstorm.NeosAuditView:Modules:event.assets.showInMediaModule')}
+                                </a>
+                            </div>
+                        </Neos.Fusion:Loop>
+                    </dd>
+                </Neos.Fusion:Fragment>
+                <dt>{I18n.translate('Sandstorm.NeosAuditView:Modules:event.type')}</dt>
+                <dd><code>{String.htmlSpecialChars(private.record.eventType)}</code></dd>
+                <dt>{I18n.translate('Sandstorm.NeosAuditView:Modules:event.stream')}</dt>
+                <dd><code>{String.htmlSpecialChars(private.record.streamName)}</code></dd>
+            </dl>
+            <details>
+                <summary>{I18n.translate('Sandstorm.NeosAuditView:Modules:event.payload')}</summary>
+                <pre>{String.htmlSpecialChars(private.record.prettyPayload)}</pre>
+            </details>
+            <details @if={private.record.metadata}>
+                <summary>{I18n.translate('Sandstorm.NeosAuditView:Modules:event.metadata')}</summary>
+                <pre>{String.htmlSpecialChars(private.record.prettyMetadata)}</pre>
+            </details>
+        </article>
+    `
+}

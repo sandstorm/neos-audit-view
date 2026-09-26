@@ -1,0 +1,280 @@
+.sandstorm-auditview a:not(.neos-button),
+.sandstorm-auditview a:not(.neos-button):visited,
+.sandstorm-auditview a:not(.neos-button):hover,
+.sandstorm-auditview a:not(.neos-button):focus,
+.sandstorm-auditview a:not(.neos-button):active {
+    color: #00adee;
+}
+.sandstorm-auditview__matched {
+    margin-bottom: 24px;
+    padding: 12px 16px;
+    background: #323232;
+}
+.sandstorm-auditview__matched ul {
+    margin: 8px 0 0;
+    padding-left: 20px;
+}
+.sandstorm-auditview__event {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: #323232;
+    border-left: 4px solid #00adee;
+}
+.sandstorm-auditview__event header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+.sandstorm-auditview__event dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 2px 16px;
+    margin: 0 0 8px;
+}
+.sandstorm-auditview__event dt {
+    color: #999;
+}
+.sandstorm-auditview__event dd {
+    margin: 0;
+}
+.sandstorm-auditview__event summary {
+    cursor: pointer;
+    color: #999;
+}
+.sandstorm-auditview__event pre {
+    max-height: 400px;
+    overflow: auto;
+    margin: 4px 0 8px;
+    padding: 8px;
+    background: #222;
+    color: #eee;
+    font-size: 12px;
+    white-space: pre;
+}
+.sandstorm-auditview__seq,
+.sandstorm-auditview__muted {
+    color: #999;
+}
+.sandstorm-auditview__badge {
+    margin-left: 8px;
+    padding: 0 6px;
+    background: #ff460d;
+    color: #fff;
+    font-size: 11px;
+}
+.sandstorm-auditview__paging {
+    display: flex;
+    gap: 8px;
+    margin: 24px 0;
+}
+.sandstorm-auditview__nodetype {
+    color: #fff;
+}
+.sandstorm-auditview__nodelabel {
+    font-weight: bold;
+}
+.sandstorm-auditview__event--content {
+    margin-left: 32px;
+}
+.sandstorm-auditview__event--source {
+    border: 2px solid #00adee;
+    border-left-width: 4px;
+}
+.sandstorm-auditview__loadmore {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+}
+.sandstorm-auditview__externallink {
+    margin-left: 8px;
+}
+
+/* ---------- filter bar: all fields share the same anatomy (label above, 40px control) ---------- */
+.neos .sandstorm-auditview .sandstorm-auditview__filter {
+    margin: 0 0 32px;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__filter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    align-items: start;
+}
+@media (max-width: 1200px) {
+    .neos .sandstorm-auditview .sandstorm-auditview__filter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+.neos .sandstorm-auditview .sandstorm-auditview__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__field--wide {
+    grid-column: span 2;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__label {
+    display: block;
+    margin: 0;
+    font-weight: normal;
+    line-height: 16px;
+    color: #999;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.neos .sandstorm-auditview input[type=text].sandstorm-auditview__input,
+.neos .sandstorm-auditview input[type=number].sandstorm-auditview__input,
+.neos .sandstorm-auditview input[type=datetime-local].sandstorm-auditview__input,
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown summary {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    background: #3f3f3f;
+    color: #fff;
+    font-size: 14px;
+    line-height: 38px;
+}
+.neos .sandstorm-auditview input[type=text].sandstorm-auditview__input:focus,
+.neos .sandstorm-auditview input[type=number].sandstorm-auditview__input:focus,
+.neos .sandstorm-auditview input[type=datetime-local].sandstorm-auditview__input:focus,
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown summary:focus-visible,
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown[open] summary {
+    outline: none;
+    border-color: #00adee;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__suboption {
+    display: flex;
+    margin: 0;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__filter-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.neos .sandstorm-auditview .sandstorm-auditview__filter-context {
+    margin-right: auto;
+    color: #999;
+}
+
+/* ---------- go to (sequence number / date & time) ---------- */
+.neos .sandstorm-auditview .sandstorm-auditview__goto {
+    margin: 0 0 32px;
+    padding-top: 24px;
+    border-top: 1px solid #3f3f3f;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__goto form {
+    margin: 0;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__goto-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+@media (max-width: 800px) {
+    .neos .sandstorm-auditview .sandstorm-auditview__goto-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+.neos .sandstorm-auditview .sandstorm-auditview__inline {
+    display: flex;
+    gap: 8px;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__inline .sandstorm-auditview__input {
+    flex: 1;
+    min-width: 0;
+}
+.neos .sandstorm-auditview input[type=datetime-local].sandstorm-auditview__input {
+    color-scheme: dark;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__inline .neos-button {
+    flex: none;
+    height: 40px;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__goto-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__notice {
+    margin-right: auto;
+    color: #ff8700;
+}
+
+/* ---------- dropdown (single + multi select) ---------- */
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown {
+    position: relative;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown summary {
+    position: relative;
+    padding-right: 32px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    list-style: none;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown summary::-webkit-details-marker {
+    display: none;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown summary::after {
+    content: '\25BE';
+    position: absolute;
+    right: 12px;
+    color: #999;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown-panel {
+    position: absolute;
+    z-index: 100;
+    top: calc(100% + 2px);
+    left: 0;
+    box-sizing: border-box;
+    min-width: 100%;
+    max-height: 480px;
+    overflow: auto;
+    padding: 8px 12px;
+    background: #222;
+    border: 1px solid #3f3f3f;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown-group {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown-group + .sandstorm-auditview__dropdown-group {
+    margin-top: 8px;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown-grouplabel,
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown-option {
+    display: flex;
+    margin: 0;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 0;
+    white-space: nowrap;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown-grouplabel {
+    font-weight: bold;
+}
+.neos .sandstorm-auditview label.sandstorm-auditview__dropdown-grouplabel,
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown-option {
+    cursor: pointer;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown-option--grouped {
+    padding-left: 22px;
+}
+.neos .sandstorm-auditview .sandstorm-auditview__dropdown-option:has(input:disabled) {
+    opacity: 0.7;
+}
