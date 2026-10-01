@@ -7,6 +7,12 @@ Neos:
             factoryObjectName: Sandstorm\NeosAuditView\Projection\AuditIndexProjectionFactory
 
   Neos:
+    userInterface:
+      translation:
+        # The Neos UI (content module menu) translates module labels client-side
+        # and only knows the sources listed here.
+        autoInclude:
+          'Sandstorm.NeosAuditView': ['Modules']
     modules:
       management:
         submodules:
